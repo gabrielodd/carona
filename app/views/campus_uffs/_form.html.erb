@@ -1,0 +1,54 @@
+<div class="panel-body">
+  <div class="row">
+    <div class="col-lg-12">
+
+<%= form_with(model: campus_uff, local: true) do |form| %>
+  <% if campus_uff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(campus_uff.errors.count, "error") %> prohibited this campus_uff from being saved:</h2>
+
+      <ul>
+      <% campus_uff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :nome %>
+    <%= form.text_field :nome, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :endereco %>
+    <%= form.text_field :endereco, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :numero %>
+    <%= form.text_field :numero, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bairro %>
+    <%= form.text_field :bairro, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :cidade %>
+    <%= form.select(:cidade, Pub::Cidade.where(estado_id: 18).pluck(:nome), { selected: 'Niterói' }, class:"form-control") %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :cep %>
+    <%= form.text_field :cep, class:"form-control" %>
+  </div>
+
+  <button type="submit" class="btn btn-default">Salvar</button>
+<% end %>
+
+    </div>
+  </div>
+</div>
+

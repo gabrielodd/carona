@@ -1,0 +1,111 @@
+<div class="panel-body">
+  <div class="row">
+    <div class="col-lg-12">
+
+<%= form_with(model: trajeto, local: true) do |form| %>
+  <% if trajeto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trajeto.errors.count, "error") %> prohibited this trajeto from being saved:</h2>
+
+      <ul>
+      <% trajeto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="partida_select" class="form-group" style="display:none">
+    <%= form.label :local_partida %>
+    <%= form.select(:local_partida, CampusUff.all.map{|c| [c.nome]}, { include_blank: 'Local de Partida' }, class:"form-control" ) %>
+  </div> 
+
+  <div id="partida_texto" class="form-group">
+    <%= form.label :local_partida %>
+    <%= form.text_field :local_partida, class:"form-control" %>
+  </div>
+
+  <input id="checkbox" type="checkbox"> Selecionar Campus UFF
+
+  <div id='local_intermediarios' class="fields">
+      <%= form.fields_for :local_intermediarios do |local| %>
+        <%= render partial: "local_intermediario_fields", locals: { f: local } %>
+      <% end %>
+      <br>
+      <%= link_to_add_association 'Adicionar Local Intermediario', form, :local_intermediarios %>
+  </div>
+  <br>
+
+  <div id="destino_select" class="form-group" style="display:none">
+    <%= form.label :local_destino %>
+    <%= form.select(:local_destino, CampusUff.all.map{|c| [c.nome]}, { include_blank: 'Local de Destino' }, class:"form-control" ) %>
+  </div>
+
+  <div id="destino_texto" class="form-group">
+    <%= form.label :local_destino %>
+    <%= form.text_field :local_destino, class:"form-control" %>
+  </div>
+
+
+  <input id="checkbox2" type="checkbox"> Selecionar Campus UFF
+
+  <div class="form-row">
+    <div class="form-group col-lg-6">
+      <%= form.label :horario, class:"mt-3" %> <br>
+      <%= form.datetime_select :horario, {} %>
+    </div>
+
+    <div class="form-group col-lg-6">
+      <%= form.label :passageiros %>
+      <%= form.select :passageiros, (1..5), {}, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :valor %>
+    <%= form.number_field :valor, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :observacao %>
+    <%= form.text_area :observacao, class:"form-control" %>
+  </div>
+
+  <%= form.hidden_field :identificacao_login_id, :value => Pub::IdentificacaoLogin.find_by(iduff: current_user.iduff).id %>
+
+  <button type="submit" class="btn btn-default">Salvar</button>
+<% end %>
+
+    </div>
+  </div>
+</div>
+<%= javascript_tag do %>
+  var checkbox = document.getElementById('checkbox');
+  var partida_texto = document.getElementById('partida_texto');
+  var partida_select = document.getElementById('partida_select');
+
+  var checkbox2 = document.getElementById('checkbox2');
+  var destino_texto = document.getElementById('destino_texto');
+  var destino_select = document.getElementById('destino_select');
+
+  checkbox.onchange = function(){
+    if(checkbox.checked) {
+      partida_texto.style.display = 'none';
+      partida_select.style.display = 'block';
+    } else {
+      partida_texto.style.display = 'block';
+      partida_select.style.display = 'none';
+    }
+  }
+
+  checkbox2.onchange = function(){
+    if(checkbox2.checked) {
+      destino_texto.style.display = 'none';
+      destino_select.style.display = 'block';
+    } else {
+      destino_texto.style.display = 'block';
+      destino_select.style.display = 'none';
+    }
+  }
+
+<% end %>

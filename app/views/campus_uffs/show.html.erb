@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @campus_uff.nome %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @campus_uff.endereco %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @campus_uff.numero %>
+</p>
+
+<p>
+  <strong>Bairro:</strong>
+  <%= @campus_uff.bairro %>
+</p>
+
+<p>
+  <strong>Cep:</strong>
+  <%= @campus_uff.cep %>
+</p>
+
+<%= link_to 'Edit', edit_campus_uff_path(@campus_uff) %> |
+<%= link_to 'Back', campus_uffs_path %>

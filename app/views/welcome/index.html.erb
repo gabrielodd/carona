@@ -1,0 +1,50 @@
+<h1>Pagina principal</h1>
+
+<p>Current User: <%= current_user %></p>
+<p>Current User.iduff: <%= current_user.iduff %></p>
+<h2>Bem Vindo</h2>
+<p><%= Pub::IdentificacaoLogin.find_by(iduff: current_user.iduff).nome %></p>
+<h2><%= Pub::IdentificacaoLogin.find_by(iduff: current_user.iduff).id %></h2>
+<p>Logado: <%= logged_in? %></p>
+
+<p><%= link_to 'Trajetos', trajetos_path %></p> 
+<p><%= link_to 'Campus UFF', campus_uffs_path %></p> 
+<p><%= link_to 'Administradores', admins_path %></p>
+
+<div class="ui-widget">
+    <label for="tags">Tags: </label>
+    <input id="tags">
+</div>
+
+
+<script>
+    $( function() {
+        var availableTags = [
+            "ActionScript",
+            "AppleScript",
+            "Asp",
+            "BASIC",
+            "C",
+            "C++",
+            "Clojure",
+            "COBOL",
+            "ColdFusion",
+            "Erlang",
+            "Fortran",
+            "Groovy",
+            "Haskell",
+            "Java",
+            "JavaScript",
+            "Lisp",
+            "Perl",
+            "PHP",
+            "Python",
+            "Ruby",
+            "Scala",
+            "Scheme"
+        ];
+        $( "#tags" ).autocomplete({
+            source: availableTags
+        });
+    } );
+</script>

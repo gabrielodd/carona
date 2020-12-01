@@ -1,0 +1,9 @@
+test:
+  issuer: 'https://test-sti.uff.br'
+  secret: 'secret'
+  identifier: 'identifier'
+
+development:
+  issuer: 'https://app.homologacao.uff.br/auth/realms/master'
+  secret: '13899e71-b668-4146-a20f-b07834a4feda'
+  identifier: 'client-app2'

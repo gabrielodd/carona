@@ -1,0 +1,2 @@
+module TrajetosHelper
+end

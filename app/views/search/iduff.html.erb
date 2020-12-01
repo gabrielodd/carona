@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Usuarios iduff</h1>
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @iduff.each do |f| %>
+      <tr>
+        <td><%= f.nome %></td>
+        <td><%= f.iduff %></td>
+        <td><%= link_to new_admin_path, class:"btn btn-success btn-circle" do %>
+            <i class="fa fa-plus"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,51 @@
+<div class="container">
+
+<% flash.each do |msg| %>
+  <div class="alert alert-success" role="alert">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Local partida</th>
+      <th>Local destino</th>
+      <th>Horario</th>
+      <th>Passageiros</th>
+      <th>Valor</th>
+      <th>Observacao</th>
+      <th>Login id</th>
+
+      <th colspan="3">
+      <%= link_to new_trajeto_path, class:"btn btn-success btn-circle" do %>
+       <i class="fa fa-plus"></i>
+      <% end %>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trajetos.each do |trajeto| %>
+      <tr>
+        <td><%= trajeto.local_partida %></td>
+        <td><%= trajeto.local_destino %></td>
+        <td><%= trajeto.horario %></td>
+        <td><%= trajeto.passageiros %></td>
+        <td><%= trajeto.valor %></td>
+        <td><%= trajeto.observacao %></td>
+        <td><%= trajeto.identificacao_login_id %></td>
+        <td><%= link_to 'Mostrar', trajeto %></td>
+        <td><%= link_to 'Editar', edit_trajeto_path(trajeto) %></td>
+        
+        <td><%= link_to 'Excluir', trajeto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Adicionar Carona', new_trajeto_path, class: "btn btn-primary btn-lg" %>
+
+</div>

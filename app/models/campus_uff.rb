@@ -1,0 +1,2 @@
+class CampusUff < ApplicationRecord
+end

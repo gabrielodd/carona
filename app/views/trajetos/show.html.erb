@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <span class="label label-info">
+        <i class="fa fa-user"></i> <%= @trajeto.passageiros %>
+      </span>
+        <%= @trajeto.local_partida %> <i class="fa fa-arrow-right"></i> <%= @trajeto.local_destino %>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Partida: <%= @trajeto.local_partida %>
+      </li>
+      <% @trajeto.local_intermediarios.each do |local|%>
+        <li class="list-group-item">
+          Local Intermediario: <%= local.local %>
+        </li>
+      <% end %>
+      <li class="list-group-item">
+        Destino: <%= @trajeto.local_destino %>
+      </li>
+      <li class="list-group-item">
+      <i class="fa fa-clock-o"></i> <%= @trajeto.horario %>
+      </li>
+      <li class="list-group-item">
+      <i class="fa fa-user"></i> <%= @trajeto.passageiros %> Passageiros
+      </li>
+      <li class="list-group-item">
+        Observação: <%= @trajeto.observacao %>
+      </li>
+    <ul>
+  </div>
+</div>
+
+<%= link_to 'Editar', edit_trajeto_path(@trajeto), class: "btn btn-primary" %> 
+    <%= link_to 'Voltar', trajetos_path, class: "btn btn-primary" %>
+

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  local_partida: MyString
+  local_destino: MyString
+  horario: 2020-11-22 22:14:44
+  passageiros: 1
+  valor: 1
+  observacao: MyText
+
+two:
+  local_partida: MyString
+  local_destino: MyString
+  horario: 2020-11-22 22:14:44
+  passageiros: 1
+  valor: 1
+  observacao: MyText
