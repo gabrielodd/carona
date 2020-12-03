@@ -1,6 +1,12 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
-  autocomplete :admins, :nome
+  def autocomplete_admin_nome
+    term = params[:term]
+    brand_id = params[:brand_id]
+    country = params[:country]
+    products = Admin.where('brand = ? AND country = ? AND name LIKE ?', brand_id, country, "%#{term}%").order(:name).all
+    render :json => products.map { |product| {:id => product.id, :label => product.name, :value => product.name} }
+  end
   # GET /admins
   # GET /admins.json
   def index

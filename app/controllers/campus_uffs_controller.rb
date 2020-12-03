@@ -1,7 +1,6 @@
 class CampusUffsController < ApplicationController
   before_action :set_campus_uff, only: [:show, :edit, :update, :destroy]
-  autocomplete :campus_uffs, :nome
-  helper_method :isAdmin
+  autocomplete :admins, :nome
   layout 'admins'
   # GET /campus_uffs
   # GET /campus_uffs.json

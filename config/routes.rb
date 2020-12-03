@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  resources :trajetos
-  resources :admins do
+  resources :trajetos 
+  resources :admins 
+  resources :campus_uffs do
     get :autocomplete_admins_nome, :on => :collection
   end
-  resources :campus_uffs do 
-    get :autocomplete_campus_uffs_nome, :on => :collection
-  end
+  
   get 'welcome/index'
   get 'search', to: 'search#trajetos'
   get 'search/campus', to: 'search#campus'
