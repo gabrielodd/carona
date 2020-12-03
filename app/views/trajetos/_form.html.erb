@@ -22,7 +22,7 @@
 
   <div id="partida_texto" class="form-group">
     <%= form.label :local_partida %>
-    <%= form.text_field :local_partida, class:"form-control" %>
+    <input class="form-control" type="text" name="trajeto[local_partida]" id="p_texto">
   </div>
 
   <input id="checkbox" type="checkbox"> Selecionar Campus UFF
@@ -43,7 +43,7 @@
 
   <div id="destino_texto" class="form-group">
     <%= form.label :local_destino %>
-    <%= form.text_field :local_destino, class:"form-control" %>
+    <input class="form-control" type="text" name="trajeto[local_destino]" id="d_texto">
   </div>
 
 
@@ -83,18 +83,24 @@
   var checkbox = document.getElementById('checkbox');
   var partida_texto = document.getElementById('partida_texto');
   var partida_select = document.getElementById('partida_select');
+  var input_partida = document.getElementById('p_texto');
+  var input_partida_select = document.getElementById('trajeto_local_partida')
 
   var checkbox2 = document.getElementById('checkbox2');
   var destino_texto = document.getElementById('destino_texto');
   var destino_select = document.getElementById('destino_select');
+  var input_destino = document.getElementById('d_texto');
+  var input_destino_select = document.getElementById('trajeto_local_destino')
 
   checkbox.onchange = function(){
     if(checkbox.checked) {
       partida_texto.style.display = 'none';
       partida_select.style.display = 'block';
+      input_partida.name = 'none';
     } else {
       partida_texto.style.display = 'block';
       partida_select.style.display = 'none';
+      input_partida.name = 'trajeto[local_partida]';
     }
   }
 
@@ -102,9 +108,11 @@
     if(checkbox2.checked) {
       destino_texto.style.display = 'none';
       destino_select.style.display = 'block';
+      input_destino.name = 'nada';
     } else {
       destino_texto.style.display = 'block';
       destino_select.style.display = 'none';
+      input_destino.name = 'trajeto[local_destino]';
     }
   }
 
