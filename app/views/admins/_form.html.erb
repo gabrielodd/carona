@@ -17,13 +17,14 @@
 
   <div class="form-group">
     <%= form.label :nome %>
-    <%= form.text_field :nome, class:"form-control" %>
+    <%= form.autocomplete_field :nome, autocomplete_identificacao_login_nome_path, :id_element => '#admin_dados_identificacoes_id', class:"form-control", placeholder:"Digite um Nome ou CPF" %>
   </div>
 
   <div class="form-group">
-    <%= form.label :dados_identificacoes_id %>
-    <%= form.text_field :dados_identificacoes_id, class:"form-control" %>
+    <%= form.hidden_field :dados_identificacoes_id %>
   </div> 
+
+  <%= form.hidden_field :data_desativacao, :value => Time.now %>
 
   <button type="submit" class="btn btn-default">Salvar</button>
 

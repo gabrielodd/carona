@@ -59,3 +59,15 @@
         </span>
     </div>
 <% end %>
+
+<%= form_tag(admins_path, :method => "get", id: "search-form") do %>
+<!-- text field tag=action,args,identifier,placeholdertext... -->
+  <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "namesearch", type: "search", data: {autocomplete: autocomplete_admins_nome_admins_path} %>  
+  <%= submit_tag "Search" %>
+<%end%>
+
+<script type="text/javascript" charset="utf-8">
+  $('#search').bind('railsAutocomplete.select', function(event, data){
+  $('#search-form').submit()
+  });
+</script>

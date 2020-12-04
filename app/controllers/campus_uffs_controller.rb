@@ -1,9 +1,9 @@
 class CampusUffsController < ApplicationController
   before_action :set_campus_uff, only: [:show, :edit, :update, :destroy]
-  autocomplete :admins, :nome
   layout 'admins'
   # GET /campus_uffs
   # GET /campus_uffs.json
+
   def index
     @campus_uffs = CampusUff.all
   end
@@ -94,6 +94,6 @@ class CampusUffsController < ApplicationController
     end
 
     def isAdmin
-      Admin.where(:dados_identificacoes_id => Pub::IdentificacaoLogin.find_by(iduff: current_user.iduff), :ativo => true).any?
+      Admin.where(:dados_identificacoes_id => Pub::IdentificacaoLogin.find_by(iduff: current_user.iduff), :data_desativacao => nil).any?
     end
 end

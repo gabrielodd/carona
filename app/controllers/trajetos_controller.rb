@@ -1,6 +1,5 @@
 class TrajetosController < ApplicationController
   before_action :set_trajeto, only: [:show, :edit, :update, :destroy]
-  autocomplete :trajeto, :observacoes
 
   # GET /trajetos
   # GET /trajetos.json

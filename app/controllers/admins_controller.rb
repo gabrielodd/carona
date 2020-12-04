@@ -1,11 +1,11 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
-  def autocomplete_admin_nome
+  autocomplete :admin, :nome
+  
+  def autocomplete_identificacao_login_nome
     term = params[:term]
-    brand_id = params[:brand_id]
-    country = params[:country]
-    products = Admin.where('brand = ? AND country = ? AND name LIKE ?', brand_id, country, "%#{term}%").order(:name).all
-    render :json => products.map { |product| {:id => product.id, :label => product.name, :value => product.name} }
+    identificacoes_Login = Pub::IdentificacaoLogin.where('nome LIKE ?', "%#{term}%").order(:nome).all.limit(20)
+    render :json => identificacoes_Login.map { |x| {:id => x.id, :label => x.nome, :value => x.nome }}
   end
   # GET /admins
   # GET /admins.json
